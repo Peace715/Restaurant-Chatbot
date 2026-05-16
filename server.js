@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
+const path = require('path');
 const { Server } = require('socket.io');
 const connectDB = require('./config/db');
 const chatRoutes = require('./routes/chatRoutes');
@@ -22,6 +23,7 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'chatbot-ui', 'public')));
 
 app.use('/api/chat', chatRoutes);
 

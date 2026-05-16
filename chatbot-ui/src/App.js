@@ -59,7 +59,11 @@ export default function ChatUI() {
       setIsMenuLoading(true);
       const res = await fetch(`${API_BASE}/api/menu`);
       const data = await res.json();
-      setMenu(data);
+      const menuWithFullImageUrls = data.map(item => ({
+        ...item,
+        image: item.image.startsWith('http') ? item.image : `${API_BASE}${item.image}`
+      }));
+      setMenu(menuWithFullImageUrls);
     } catch (err) {
       addMessage("bot", "I could not load the menu. Check the server and try again.");
     } finally {
