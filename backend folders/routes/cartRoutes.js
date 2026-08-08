@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const MenuItem = require("../backend/models/MenuItem");
-const User = require("../backend/models/User");
+const MenuItem = require("../models/MenuItem");
+const User = require("../models/User");
 
 function summarizeCart(items) {
   const total = items.reduce((sum, item) => sum + item.price, 0);
