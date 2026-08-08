@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { handleChatbot } = require('../backend/controllers/chatbotController');
+const { handleChatbot } = require('../controllers/chatbotController');
 
 router.post('/', async (req, res) => {
   const { message, deviceId } = req.body;
